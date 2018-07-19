@@ -1,0 +1,36 @@
+{
+    "name": "nabu-3/provider-nabu-spreadsheet",
+    "description": "nabu-3 provider to create MS-Excel spreadsheets",
+    "version": "0.0.1",
+    "type": "nabu-provider",
+    "keywords": [ "nabu-3", "nabu", "spreadsheet", "microsoft", "excel", "msexcel", "ms-excel", "datasheet", "provider" ],
+    "license": "Apache-2.0",
+    "authors": [
+        {
+            "name": "Rafael Gutierrez",
+            "email": "rgutierrez@nabu-3.com",
+            "role": "Developer"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/nabu-3/provider-nabu-spreadsheet/issues"
+    },
+    "config": {
+        "bin-dir": "bin",
+        "vendor-dir": "lib"
+    },
+    "require": {
+        "nabu-3/composer-installer-plugin": ">=3.0",
+        "ext-gd": "*",
+        "phpoffice/phpspreadsheet": ">=1.3.1"
+    },
+    "require-dev": {
+        "nabu-3/composer-installer-plugin": "dev-master"
+    },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/nabu-3/provider-nabu-pdf"
+        }
+    ]
+}
