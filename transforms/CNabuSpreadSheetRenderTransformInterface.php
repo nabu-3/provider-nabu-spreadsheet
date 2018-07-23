@@ -67,30 +67,5 @@ class CNabuSpreadSheetRenderTransformInterface extends CNabuRenderTransformInter
 
         $writer = IOFactory::createWriter($spreadsheet, 'Xls');
         $writer->save('php://output');
-
-
-        /*
-        $nb_engine = CNabuEngine::getEngine();
-        $nb_application = $nb_engine->getApplication();
-        $base_path = $nb_application->getBasePath();
-
-        $iso_6391 = $this->nb_language instanceof CNabuLanguage ? $this->nb_language->getISO6391() : 'en';
-
-        try {
-            $html2pdf = new Html2Pdf('P', 'A4', $iso_6391, true, 'UTF-8', array(0,0,0,0));
-            //$html2pdf->setModeDebug();
-            $html2pdf->pdf->SetDisplayMode('fullpage');
-
-            $pushd = getcwd();
-            chdir($base_path . DIRECTORY_SEPARATOR . NABU_PUB_FOLDER . DIRECTORY_SEPARATOR . NABU_PDF_FOLDER);
-            $html2pdf->writeHTML($source);
-            $html2pdf->output('exemple03.pdf');
-            chdir($pushd);
-
-        } catch (Html2PdfException $e) {
-            $formatter = new ExceptionFormatter($e);
-            echo $formatter->getHtmlMessage();
-        }
-        */
     }
 }
