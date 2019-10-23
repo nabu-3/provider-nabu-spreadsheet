@@ -49,7 +49,7 @@ class CNabuSpreadSheetRenderTransformInterface extends CNabuRenderTransformInter
             $headers = array_shift($json);
             $column = 1;
             foreach ($headers as $header) {
-                $sheet->setCellValue(chr(64 + $column) . '1', $header);
+                $sheet->setCellValue($this->numberToColumn($column) . '1', $header);
                 $column++;
             }
             if (count($json) > 0) {
@@ -57,7 +57,7 @@ class CNabuSpreadSheetRenderTransformInterface extends CNabuRenderTransformInter
                 foreach ($json as $data) {
                     $column = 1;
                     foreach ($headers as $key => $header) {
-                        $sheet->setCellValue(chr(64 + $column) . $row, $data[$key]);
+                        $sheet->setCellValue($this->numberToColumn($column) . $row, $data[$key]);
                         $column++;
                     }
                     $row++;
@@ -67,5 +67,23 @@ class CNabuSpreadSheetRenderTransformInterface extends CNabuRenderTransformInter
 
         $writer = IOFactory::createWriter($spreadsheet, 'Xls');
         $writer->save('php://output');
+    }
+
+    private function numberToColumn(int $num)
+    {
+        $num--;
+        $column = '';
+
+        do {
+            $rest = $num % 26;
+            if (strlen($column) == 0) {
+                $column = chr(65 + $rest);
+            } else {
+                $column = chr(64 + $rest) . $column;
+            }
+            $num = intdiv($num, 26);
+        } while ($num > 0);
+
+        return $column;
     }
 }
