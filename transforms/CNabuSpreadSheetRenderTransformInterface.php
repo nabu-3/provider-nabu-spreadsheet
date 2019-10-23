@@ -57,7 +57,9 @@ class CNabuSpreadSheetRenderTransformInterface extends CNabuRenderTransformInter
                 foreach ($json as $data) {
                     $column = 1;
                     foreach ($headers as $key => $header) {
-                        $sheet->setCellValue($this->numberToColumn($column) . $row, $data[$key]);
+                        if (array_key_exists($key, $data)) {
+                            $sheet->setCellValue($this->numberToColumn($column) . $row, $data[$key]);
+                        }
                         $column++;
                     }
                     $row++;
